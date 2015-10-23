@@ -1,1 +1,1 @@
-# ZenPacks.community.PanduitMonitoring.
+Zenpack for monitoring Panduit/Sinetica Enviornmental monitoring appliances 
