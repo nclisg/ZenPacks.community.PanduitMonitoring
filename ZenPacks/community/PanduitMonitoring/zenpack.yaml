@@ -1,0 +1,25 @@
+name: ZenPacks.community.PanduitMonitoring
+
+classes:
+  PanduitMonitoringDevice:
+    base: [zenpacklib.Device]
+    label: Panduit
+    
+  PanduitTemperatureSensor:
+    base: [zenpacklib.Component]
+    label: Temperature Sensor
+    monitoring_templates: [PanduitTemperatureSensor]
+    properties:
+      channel:
+        label: Channel
+        
+device_classes:
+  /Environment/Panduit:
+    zProperties:
+      zPythonClass: ZenPacks.community.PanduitMonitoring.PanduitMonitoringDevice
+
+class_relationships:
+ - PanduitMonitoringDevice 1:MC PanduitTemperatureSensor
+
+
+
