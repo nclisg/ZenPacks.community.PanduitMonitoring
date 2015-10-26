@@ -106,21 +106,4 @@ AVERAGE
 </object>
 </tomanycont>
 </object>
-<!-- ('', 'zport', 'dmd', 'Manufacturers', 'SINETICA', 'products', 'EnviroHawk2') -->
-<object id='/zport/dmd/Manufacturers/SINETICA/products/EnviroHawk2' module='Products.ZenModel.HardwareClass' class='HardwareClass'>
-<property type="string" id="name" mode="w" >
-EnviroHawk2
-</property>
-<property type="lines" id="productKeys" mode="w" >
-['.1.3.6.1.4.1.3711.24']
-</property>
-<property type="boolean" id="isOS" mode="w" >
-False
-</property>
-<tomany id='instances'>
-<link objid='/zport/dmd/Devices/Environment/Panduit/devices/issenv-sb12-10/hw'/>
-<link objid='/zport/dmd/Devices/Environment/Panduit/devices/issenv-sb12-05/hw'/>
-<link objid='/zport/dmd/Devices/Environment/Panduit/devices/issenv-sb12-02/hw'/>
-</tomany>
-</object>
 </objects>
