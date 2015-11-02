@@ -1,1 +1,36 @@
 name: ZenPacks.community.HuaweiWireless
+
+classes:
+  HuaweiControllerDevice:
+    base: [zenpacklib.Device]
+    label:  Controller
+  HuaweiAccessPoint:
+    base: [zenpacklib.Device]
+    base: Access Point
+    properties:
+      apip:
+        label: IP
+      apmac:
+        label: MAC
+      apserial:
+        label: Serial
+      apmodel:
+        label: Model
+      apstatus:
+        label: Status
+      apregion:
+        label: Region
+      apsoftwareversion:
+        label: Firmware
+      apneighbourname:
+        label: AP Neighbour
+      apneighbourport:
+        label: Neigbout Port
+
+device_classes:
+  /Network/Wireless/Access Controller/Huawei:
+    zProperties:
+      zPythonClass: ZenPacks.community.HuaweiWireless.HuaweiControllerDevice
+
+class_relationships:
+  - HuaweiControllerDevice 1:MC HuaweiAccessPoint
