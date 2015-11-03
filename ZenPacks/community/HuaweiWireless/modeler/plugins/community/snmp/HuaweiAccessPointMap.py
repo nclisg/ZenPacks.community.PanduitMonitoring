@@ -52,6 +52,8 @@ class HuaweiAccessPointMap(SnmpPlugin):
                 log.warn('Skipping access point with no name') 
                 continue 
 
+            log.warn('Processing AP %s', name)
+
             apneighbour = lldp.get(snmpindex + '.200.1')
             if apneighbour is not None:
                 neighbour = apneighbour.get('hwApLldpRemSysName'),
