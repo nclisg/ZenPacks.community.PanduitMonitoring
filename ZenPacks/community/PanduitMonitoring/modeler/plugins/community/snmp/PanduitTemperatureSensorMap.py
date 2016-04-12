@@ -1,8 +1,9 @@
-from Products.DataCollector.plugins.CollectorPlugin import (SnmpPlugin, GetTableMap)
-
-__doc__ = """PanduitTemperatureSensorMap
+"""PanduitTemperatureSensorMap
 Gathers Temperature Sensors from Panduit Environmental Monitoring Devices
 """
+
+from Products.DataCollector.plugins.CollectorPlugin import (SnmpPlugin, GetTableMap)
+
 
 class PanduitTemperatureSensorMap(SnmpPlugin):
     relname = 'panduitTemperatureSensors'
@@ -16,25 +17,26 @@ class PanduitTemperatureSensorMap(SnmpPlugin):
                 '.6':'ipTHAType',
                 }
         ),
-    )  
+    )
 
     def process(self, device, results, log):
+        """ Process results and return a relationship map"""
         log.info('processing %s for device %s', self.name(), device.id)
- 
-        sensorinfo = results[1].get('ipTHAEntry', {}) 
 
-        rm = self.relMap()
+        sensorinfo = results[1].get('ipTHAEntry', {})
+
+        relmap = self.relMap()
         for snmpindex, row in sensorinfo.items():
             # do check for no data?
 
-            name = row.get('ipTHAName')            
+            name = row.get('ipTHAName')
 
-	    if (row.get('ipTHAType') == 2): 
-                rm.append(self.objectMap({
+            if row.get('ipTHAType') == 2:
+                relmap.append(self.objectMap({
                     'id': self.prepId(name),
                     'title': name,
                     'snmpindex': snmpindex.strip('.'),
                     'channel': row.get('ipTHAChan'),
                     }))
-        return rm
+        return relmap
 
